@@ -185,14 +185,23 @@ export default function CoursesPage() {
                 </div>
               </div>
 
-              <a 
-                href="#contact"
-                onClick={() => setSelectedCourse(null)}
-                className="block w-full py-4 rounded-2xl text-center font-bold text-black transition-all hover:scale-[1.02]"
-                style={{ background: `linear-gradient(135deg, ${selectedCourse.color}, #fff)` }}
-              >
-                Enroll or Inquire Now
-              </a>
+              <div className="flex flex-col sm:flex-row gap-4 mb-2">
+                <a 
+                  href="#contact"
+                  onClick={() => setSelectedCourse(null)}
+                  className="flex-1 py-4 rounded-2xl text-center font-bold text-black transition-all hover:scale-[1.02] shadow-lg"
+                  style={{ background: `linear-gradient(135deg, ${selectedCourse.color}, #fff)` }}
+                >
+                  Enroll Now
+                </a>
+                <a 
+                  href="#contact"
+                  onClick={() => setSelectedCourse(null)}
+                  className="flex-1 py-4 rounded-2xl text-center font-bold text-white transition-all hover:scale-[1.02] border border-white/20 glass hover:bg-white/5 shadow-lg"
+                >
+                  Inquire Now
+                </a>
+              </div>
             </div>
           </div>
         </div>
