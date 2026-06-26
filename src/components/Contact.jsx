@@ -51,16 +51,16 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8">
-          {/* Form — 3 cols */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+          {/* Form — 3 cols on desktop, 1 on mobile */}
           <div
             ref={formRef}
-            className="lg:col-span-3 p-8 rounded-3xl transition-all duration-700"
+            className="lg:col-span-3 p-6 md:p-8 rounded-3xl transition-all duration-700 order-2 lg:order-1"
             style={{
               background: 'var(--bg-card)',
               border: '1px solid var(--border)',
               opacity: formVisible ? 1 : 0,
-              transform: formVisible ? 'translateX(0)' : 'translateX(-40px)'
+              transform: formVisible ? 'translateX(0)' : 'translateY(40px)'
             }}
           >
             {sent ? (
@@ -143,7 +143,7 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="group w-full flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-black transition-all duration-300 hover:scale-[1.02]"
+                  className="group w-full flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-black transition-all duration-300 hover:scale-[1.01]"
                   style={{
                     background: 'linear-gradient(135deg, var(--neon-cyan), var(--neon-green))',
                     boxShadow: '0 0 30px var(--glow-cyan)'
@@ -156,35 +156,35 @@ export default function Contact() {
             )}
           </div>
 
-          {/* Info — 2 cols */}
+          {/* Info — 2 cols on desktop, grid/stacked on mobile */}
           <div
             ref={infoRef}
-            className="lg:col-span-2 space-y-5 transition-all duration-700"
+            className="lg:col-span-2 space-y-4 md:space-y-5 transition-all duration-700 order-1 lg:order-2"
             style={{
               opacity: infoVisible ? 1 : 0,
-              transform: infoVisible ? 'translateX(0)' : 'translateX(40px)'
+              transform: infoVisible ? 'translateX(0)' : 'translateY(40px)'
             }}
           >
             {[
               { icon: MapPin, label: 'Location', value: 'Amravati, Maharashtra, India', color: 'var(--neon-cyan)', href: null },
-              { icon: Mail, label: 'Email', value: 'circuitoclarosolutionspvtltd@gmail.com', color: 'var(--neon-green)', href: 'mailto:circuitoclarosolutionspvtltd@gmail.com' },
+              { icon: Mail, label: 'Email', value: 'circuitoclaro\nsolutionspvtltd@gmail.com', color: 'var(--neon-green)', href: 'mailto:circuitoclarosolutionspvtltd@gmail.com' },
               { icon: Phone, label: 'Phone', value: '+91 96998 61781', color: 'var(--neon-orange)', href: 'tel:+919699861781' },
               { icon: Linkedin, label: 'LinkedIn', value: 'CircuitoClaro Solutions', color: '#0077b5', href: 'https://www.linkedin.com/in/circuitoclaro-solutions-private-limited-035727376/' },
               { icon: Instagram, label: 'Instagram', value: '@cir.cuitoclaro', color: '#e4405f', href: 'https://www.instagram.com/cir.cuitoclaro?igsh=MWVzbjF6aHhmY2dkMQ==' },
             ].map(({ icon: Icon, label, value, color, href }, i) => (
               <div
                 key={i}
-                className="group flex items-start gap-4 p-5 rounded-2xl glow-border transition-all duration-300 hover:scale-[1.02]"
+                className="group flex flex-row items-center gap-4 p-4 md:p-5 rounded-2xl glow-border transition-all duration-300 hover:scale-[1.02]"
                 style={{ background: 'var(--bg-card)' }}
               >
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                  className="w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center flex-shrink-0"
                   style={{ background: `${color}18`, border: `1px solid ${color}30` }}
                 >
-                  <Icon size={18} style={{ color }} />
+                  <Icon size={20} style={{ color }} />
                 </div>
-                <div className="flex-1">
-                  <p className="text-xs font-mono font-semibold mb-0.5" style={{ color: 'var(--text-muted)' }}>
+                <div className="flex-1 min-w-0">
+                  <p className="text-[10px] md:text-xs font-mono font-semibold mb-0.5" style={{ color: 'var(--text-muted)' }}>
                     {label}
                   </p>
                   {href ? (
@@ -192,20 +192,19 @@ export default function Contact() {
                       href={href} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="text-sm font-medium hover:underline block" 
-                      style={{ color: 'var(--text-primary)' }}
+                      className="text-sm font-bold truncate block transition-colors hover:text-[var(--neon-cyan)]" 
+                      style={{ color: 'var(--text-primary)', whiteSpace: 'pre-wrap' }}
                     >
                       {value}
                     </a>
                   ) : (
-                    <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
+                    <p className="text-sm font-bold truncate block" style={{ color: 'var(--text-primary)' }}>
                       {value}
                     </p>
                   )}
                 </div>
               </div>
             ))}
-
           </div>
         </div>
       </div>
