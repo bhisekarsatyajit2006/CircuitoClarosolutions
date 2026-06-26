@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import { ArrowUpRight } from 'lucide-react'
 import bonelinkImg from '../assets/bonelink.jpg'
@@ -107,7 +108,7 @@ export default function Products() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
           {products.map((product, i) => {
             const [ref, isVisible] = useScrollAnimation()
             return (
@@ -189,6 +190,20 @@ export default function Products() {
               </div>
             )
           })}
+        </div>
+
+        <div className="text-center">
+          <Link 
+            to="/products"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-bold transition-all hover:scale-[1.05] shadow-2xl relative group"
+            style={{ 
+              background: 'linear-gradient(135deg, var(--neon-cyan), #fff)',
+              color: 'black'
+            }}
+          >
+            Explore More Products
+            <ArrowUpRight size={20} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+          </Link>
         </div>
       </div>
     </section>

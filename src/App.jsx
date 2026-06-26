@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import HomePage from './components/HomePage'
 import CoursesPage from './components/CoursesPage'
+import ProductsPage from './components/ProductsPage'
 import Footer from './components/Footer'
 import WhatsAppFloat from './components/WhatsAppFloat'
 
@@ -24,6 +25,7 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/courses" element={<CoursesPage />} />
+          <Route path="/products" element={<ProductsPage />} />
         </Routes>
       </main>
       <Footer />

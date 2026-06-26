@@ -5,9 +5,10 @@ import logoImg from '../assets/company_logo.png'
 
 const navLinks = [
   { label: 'About', href: '/#about' },
+  { label: 'Courses', href: '/courses' },
   { label: 'Services', href: '/#services' },
+  { label: 'Products', href: '/products' },
   { label: 'Workshops', href: '/#workshops' },
-  { label: 'Products', href: '/#products' },
   { label: 'Team', href: '/#team' },
   { label: 'Contact', href: '/#contact' },
 ]
