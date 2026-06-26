@@ -3,6 +3,7 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import { X, ArrowRight, CheckCircle2, TrendingUp, ShieldCheck, ShoppingCart, MessageCircle, Package, Zap, Award } from 'lucide-react'
 import bonelinkImg from '../assets/bonelink.jpg'
 import homekitImg from '../assets/homekit.jpg'
+import agriDroneImg from '../assets/agridroneproduct.png'
 
 const products = [
   {
@@ -35,6 +36,22 @@ const products = [
       { text: 'Plug & Play Setup', icon: Zap },
       { text: 'Industrial Grade IoT', icon: ShieldCheck },
       { text: 'Customizable Dashboard', icon: Package },
+    ]
+  },
+  {
+    id: 'agri-drone',
+    name: 'Agriculture Spray Drone',
+    subtitle: 'Precision Farming - 10L Payload',
+    shortDesc: 'Advanced spraying solution for modern crop management and monitoring.',
+    fullDesc: 'Our heavy-duty agricultural drone is designed for precision spraying of pesticides and fertilizers. It features autonomous terrain following, fail-safe GPS navigation, and a dual-pump spray system to maximize coverage while minimizing chemical waste.',
+    image: agriDroneImg,
+    color: '#fbbf24',
+    tag: 'New Hardware',
+    features: ['10L Tank Capacity', 'GPS Autonomous Flight', 'Dual-Pump Spray System', 'Foldable Carbon Fiber Frame'],
+    highlights: [
+      { text: 'High Efficiency Spraying', icon: Zap },
+      { text: 'Autonomous Navigation', icon: ShieldCheck },
+      { text: 'Low Maintenance Design', icon: Package },
     ]
   }
 ]

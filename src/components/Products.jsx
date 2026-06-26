@@ -4,6 +4,7 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import { ArrowUpRight } from 'lucide-react'
 import bonelinkImg from '../assets/bonelink.jpg'
 import homekitImg from '../assets/homekit.jpg'
+import agriDroneImg from '../assets/agridroneproduct.png'
 
 function Tilt3DCard({ children, color }) {
   const cardRef = useRef(null)
@@ -62,6 +63,16 @@ const products = [
     features: ['IoT-Based Control', 'ESP Microcontroller', 'Hands-on Learning Kit'],
     color: 'var(--neon-green)',
     tag: 'IoT Product',
+  },
+  {
+    id: 'agri-drone',
+    name: 'Agriculture Drone',
+    image: agriDroneImg,
+    subtitle: 'Precision Spraying System',
+    description: 'A high-capacity drone engineered for modern farming. Simplifies pesticide spraying and crop monitoring with automated flight paths and precision controllers.',
+    features: ['10L Tank Capacity', 'GPS Autonomous Flight', 'Dual-Pump Spray System'],
+    color: '#fbbf24',
+    tag: 'New Launch',
   },
 ]
 
