@@ -1,32 +1,30 @@
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import TrustedBy from './components/TrustedBy'
-import About from './components/About'
-import Services from './components/Services'
-import TechStack from './components/TechStack'
-import Industries from './components/Industries'
-import Products from './components/Products'
-import Workshops from './components/Workshops'
-import Team from './components/Team'
-import Contact from './components/Contact'
+import HomePage from './components/HomePage'
+import CoursesPage from './components/CoursesPage'
 import Footer from './components/Footer'
 import WhatsAppFloat from './components/WhatsAppFloat'
+
+// Scroll to top on route change
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
 
 function AppContent() {
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-primary)' }}>
+      <ScrollToTop />
       <Navbar />
       <main>
-        <Hero />
-        <TrustedBy />
-        <About />
-        <Services />
-        <TechStack />
-        <Industries />
-        <Products />
-        <Workshops />
-        <Team />
-        <Contact />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/courses" element={<CoursesPage />} />
+        </Routes>
       </main>
       <Footer />
       <WhatsAppFloat />
@@ -36,6 +34,8 @@ function AppContent() {
 
 export default function App() {
   return (
-    <AppContent />
+    <Router>
+      <AppContent />
+    </Router>
   )
 }

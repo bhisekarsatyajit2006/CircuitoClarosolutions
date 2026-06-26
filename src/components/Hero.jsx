@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useSpotlight } from '../hooks/useScrollAnimation'
 import { ArrowRight, ArrowUpRight, ChevronDown, Cpu, Wifi, Bot, Plane } from 'lucide-react'
+import { HashLink as Link } from 'react-router-hash-link'
 
 const WORDS = ['Robotics', 'IoT Systems', 'Drone Tech', 'AI Learning', 'Innovation', 'Automation']
 
@@ -203,8 +204,9 @@ export default function Hero() {
         <div
           className={`flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 transition-all duration-700 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
         >
-          <a
-            href="#services"
+          <Link
+            smooth
+            to="/#services"
             className="group flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-black transition-all duration-300 hover:scale-105 active:scale-95"
             style={{
               background: 'linear-gradient(135deg, var(--neon-cyan), var(--neon-green))',
@@ -213,9 +215,9 @@ export default function Hero() {
           >
             Explore Programs
             <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-          </a>
-          <a
-            href="#workshops"
+          </Link>
+          <Link
+            to="/courses"
             className="group flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-black transition-all duration-300 hover:scale-105 active:scale-95"
             style={{
               background: 'linear-gradient(135deg, var(--neon-cyan), var(--neon-green))',
@@ -224,7 +226,7 @@ export default function Hero() {
           >
             Explore Courses
             <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          </Link>
         </div>
 
         {/* Stats row */}
