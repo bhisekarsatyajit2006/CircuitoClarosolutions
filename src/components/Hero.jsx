@@ -4,7 +4,7 @@ import { ArrowRight, ArrowUpRight, ChevronDown, Cpu, Wifi, Bot, Plane } from 'lu
 
 const WORDS = ['Robotics', 'IoT Systems', 'Drone Tech', 'AI Learning', 'Innovation', 'Automation']
 
-function ParticleCanvas({ isDark }) {
+function ParticleCanvas() {
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -30,7 +30,7 @@ function ParticleCanvas({ isDark }) {
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-      const color = isDark ? '0, 245, 255' : '14, 165, 233'
+      const color = '14, 165, 233' // Light theme blue
 
       particles.forEach(p => {
         p.x += p.vx
@@ -69,7 +69,7 @@ function ParticleCanvas({ isDark }) {
       cancelAnimationFrame(animId)
       window.removeEventListener('resize', resize)
     }
-  }, [isDark])
+  }, [])
 
   return <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" />
 }
@@ -110,7 +110,7 @@ const floatingIcons = [
   { Icon: Plane, delay: '2s', x: '8%', y: '70%', color: 'var(--neon-orange)' },
 ]
 
-export default function Hero({ isDark }) {
+export default function Hero() {
   const spotlightRef = useSpotlight()
   const [mounted, setMounted] = useState(false)
 
@@ -129,7 +129,7 @@ export default function Hero({ isDark }) {
       <div className="absolute inset-0 grid-bg opacity-40" />
 
       {/* Particle canvas */}
-      <ParticleCanvas isDark={isDark} />
+      <ParticleCanvas />
 
       {/* Glowing orbs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
