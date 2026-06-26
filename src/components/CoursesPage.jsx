@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
-import { Cpu, Globe, Brain, Layout, Box, Plane, Rocket, X, ArrowRight, CheckCircle2 } from 'lucide-react'
+import { Cpu, Globe, Brain, Layout, Box, Plane, Rocket, X, ArrowRight, CheckCircle2, TrendingUp, GraduationCap, Lightbulb, UserCheck, ShieldCheck, Award } from 'lucide-react'
 
 const courses = [
   {
@@ -32,22 +32,14 @@ const courses = [
   },
   {
     id: 'pcb',
-    title: 'PCB Design & Hardware',
+    title: 'PCB Design & Basic Electronics',
     shortDesc: 'Design professional circuits and production-ready hardware.',
     fullDesc: 'From schematic capture to multi-layer PCB layout. Learn industry-standard tools like KiCad and Altium to transform your breadboard projects into professional products.',
     icon: Layout,
     color: '#f97316',
     features: ['Schematic Design', 'PCB Routing Basics', 'SMD Component Handling', 'Manufacturing Exports']
   },
-  {
-    id: '3d-printing',
-    title: '3D Design & Prototyping',
-    shortDesc: 'Transform digital concepts into physical reality.',
-    fullDesc: 'Learn CAD modeling using Fusion 360 and the mechanics of FDM/SLA printing. Master the end-to-end process of rapid prototyping for engineering enclosures.',
-    icon: Box,
-    color: '#ec4899',
-    features: ['3D Modeling (CAD)', 'Slicing & Optimization', 'Materials Science', 'Post-Processing']
-  },
+  
   {
     id: 'drones',
     title: 'Drone Technology',
@@ -57,15 +49,7 @@ const courses = [
     color: '#14b8a6',
     features: ['Flight Dynamics', 'Flight Controller Logic', 'Telemetry Systems', 'Safe Piloting Skills']
   },
-  {
-    id: 'entrepreneurship',
-    title: 'Entrepreneurship in Tech',
-    shortDesc: 'Turn your technical innovation into a successful startup.',
-    fullDesc: 'Learn the business side of technology. Master product-market fit, patent filing, and building a scalable business model around your hardware or software innovation.',
-    icon: Rocket,
-    color: '#fbbf24',
-    features: ['Market Research', 'Patents & Intellectual Property', 'Fundraising Basics', 'Pitching Skills']
-  }
+  
 ]
 
 export default function CoursesPage() {
@@ -130,7 +114,7 @@ export default function CoursesPage() {
       {selectedCourse && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-md" onClick={() => setSelectedCourse(null)} />
-          <div className="relative w-full max-w-2xl bg-[#0a0a0b] rounded-[3rem] border border-white/10 overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-300">
+          <div className="relative w-full max-w-2xl bg-[#0a0a0b] rounded-[3rem] border border-white/10 overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-300 max-h-[90vh] flex flex-col">
             <button 
               onClick={() => setSelectedCourse(null)}
               className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/50 hover:text-white transition-colors z-20"
@@ -138,7 +122,7 @@ export default function CoursesPage() {
               <X size={24} />
             </button>
             
-            <div className="p-8 md:p-12">
+            <div className="p-8 md:p-12 overflow-y-auto custom-scrollbar">
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center"
                      style={{ background: `${selectedCourse.color}15`, border: `1px solid ${selectedCourse.color}30` }}>
@@ -158,6 +142,47 @@ export default function CoursesPage() {
                     <span className="text-sm font-medium" style={{ color: 'white' }}>{feature}</span>
                   </div>
                 ))}
+              </div>
+
+              {/* Universal Highlights */}
+              <div className="mb-10 p-6 rounded-2xl bg-white/5 border border-white/10">
+                <h4 className="text-sm font-bold uppercase tracking-wider mb-6 flex items-center gap-2" style={{ color: selectedCourse.color }}>
+                  <TrendingUp size={16} /> Key Highlights
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {[
+                    { text: 'Practical & Industry-Oriented Learning', icon: GraduationCap },
+                    { text: 'Real-World Project Experience', icon: Rocket },
+                    { text: 'Latest Technology Exposure', icon: Lightbulb },
+                    { text: 'Career & Placement Advantages', icon: TrendingUp },
+                    { text: 'Better Future Preparation', icon: UserCheck },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5">
+                      <item.icon size={18} style={{ color: selectedCourse.color }} />
+                      <span className="text-xs font-medium text-white/80">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Expert Info & Certificate */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+                  <h4 className="text-sm font-bold uppercase tracking-wider mb-4 flex items-center gap-2" style={{ color: '#10b981' }}>
+                    <ShieldCheck size={18} /> Trainer Expertise
+                  </h4>
+                  <p className="text-xs text-white/70 leading-relaxed">
+                    Training by Industry Professionals with <strong>4-5 Years</strong> of industrial experience in {selectedCourse.title}.
+                  </p>
+                </div>
+                <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+                  <h4 className="text-sm font-bold uppercase tracking-wider mb-4 flex items-center gap-2" style={{ color: '#f59e0b' }}>
+                    <Award size={18} /> Certification
+                  </h4>
+                  <p className="text-xs text-white/70 leading-relaxed">
+                    Official <strong>Company Certificate</strong> provided upon successful completion of the course/internship.
+                  </p>
+                </div>
               </div>
 
               <a 
