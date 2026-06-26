@@ -232,10 +232,10 @@ export default function Hero() {
           className={`grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto transition-all duration-700 delay-500 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
         >
           {[
-            { num: '8+', label: 'Workshops Conducted' },
+            { num: '10+', label: 'Workshops Conducted' },
             { num: '7', label: 'Programs Offered' },
             { num: '2', label: 'Innovative Products' },
-            { num: '1', label: 'MOU with SGBAU' },
+            { num: '3', label: 'MOU with SGBAU' },
           ].map((s, i) => (
             <div
               key={i}

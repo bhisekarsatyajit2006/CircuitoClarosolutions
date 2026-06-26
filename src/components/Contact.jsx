@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
-import { Mail, MapPin, Phone, Send, CheckCircle } from 'lucide-react'
+import { Mail, MapPin, Phone, Send, CheckCircle, Instagram, Linkedin } from 'lucide-react'
 
 export default function Contact() {
   const [titleRef, titleVisible] = useScrollAnimation()
@@ -166,13 +166,15 @@ export default function Contact() {
             }}
           >
             {[
-              { icon: MapPin, label: 'Location', value: 'Amravati, Maharashtra, India', color: 'var(--neon-cyan)' },
-              { icon: Mail, label: 'Email', value: 'info@circuitoclaro.com', color: 'var(--neon-green)' },
-              { icon: Phone, label: 'Phone', value: '+91 XXXXX XXXXX', color: 'var(--neon-orange)' },
-            ].map(({ icon: Icon, label, value, color }, i) => (
+              { icon: MapPin, label: 'Location', value: 'Amravati, Maharashtra, India', color: 'var(--neon-cyan)', href: null },
+              { icon: Mail, label: 'Email', value: 'circuitoclarosolutionspvtltd@gmail.com', color: 'var(--neon-green)', href: 'mailto:circuitoclarosolutionspvtltd@gmail.com' },
+              { icon: Phone, label: 'Phone', value: '+91 96998 61781', color: 'var(--neon-orange)', href: 'tel:+919699861781' },
+              { icon: Linkedin, label: 'LinkedIn', value: 'CircuitoClaro Solutions', color: '#0077b5', href: 'https://www.linkedin.com/in/circuitoclaro-solutions-private-limited-035727376/' },
+              { icon: Instagram, label: 'Instagram', value: '@cir.cuitoclaro', color: '#e4405f', href: 'https://www.instagram.com/cir.cuitoclaro?igsh=MWVzbjF6aHhmY2dkMQ==' },
+            ].map(({ icon: Icon, label, value, color, href }, i) => (
               <div
                 key={i}
-                className="flex items-start gap-4 p-5 rounded-2xl glow-border"
+                className="group flex items-start gap-4 p-5 rounded-2xl glow-border transition-all duration-300 hover:scale-[1.02]"
                 style={{ background: 'var(--bg-card)' }}
               >
                 <div
@@ -181,13 +183,25 @@ export default function Contact() {
                 >
                   <Icon size={18} style={{ color }} />
                 </div>
-                <div>
+                <div className="flex-1">
                   <p className="text-xs font-mono font-semibold mb-0.5" style={{ color: 'var(--text-muted)' }}>
                     {label}
                   </p>
-                  <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
-                    {value}
-                  </p>
+                  {href ? (
+                    <a 
+                      href={href} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-sm font-medium hover:underline block" 
+                      style={{ color: 'var(--text-primary)' }}
+                    >
+                      {value}
+                    </a>
+                  ) : (
+                    <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
+                      {value}
+                    </p>
+                  )}
                 </div>
               </div>
             ))}

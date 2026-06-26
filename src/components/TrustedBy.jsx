@@ -96,14 +96,14 @@ export default function TrustedBy() {
           </h3>
         </div>
 
-        <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-90">
+        <div className="grid grid-cols-2 md:grid-cols-4 items-center gap-10 md:gap-16 opacity-90">
           {partners.map((partner, i) => (
             <div key={i} className="flex flex-col items-center gap-4">
-              <div className="h-20 md:h-24 flex items-center">
+              <div className="h-16 md:h-24 flex items-center">
                 <img src={partner.img} alt={partner.alt} className="h-full w-auto object-contain" />
               </div>
               <span
-                className="text-xs font-mono tracking-wide uppercase text-center max-w-[140px]"
+                className="text-[10px] md:text-xs font-mono tracking-wide uppercase text-center max-w-[140px]"
                 style={{ color: 'var(--text-secondary)' }}
               >
                 {partner.label}

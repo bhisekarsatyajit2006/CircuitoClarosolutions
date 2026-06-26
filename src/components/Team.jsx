@@ -5,6 +5,8 @@ import cofounderImg from '../assets/cofounder.jpg'
 import ctoImg from '../assets/cto.jpg'
 import cmoImg from '../assets/cmo.jpg'
 import softwareDevImg from '../assets/software_devloper.jpg'
+import softwareDev2Img from '../assets/software_devloper2.jpg.jpeg'
+import trainerImg from '../assets/trainer.jpeg'
 import designerImg from '../assets/designer.jpg'
 import mentorImg from '../assets/company_mentor.jpg'
 
@@ -67,6 +69,24 @@ const teamMembers = [
     image: designerImg,
     linkedin: 'https://linkedin.com',
   },
+  {
+    name: 'Mr. Satyajit Bhisekar',
+    role: 'Software Developer',
+    initials: 'SB',
+    color: 'var(--neon-purple)',
+    gradient: 'linear-gradient(135deg, #8b5cf6, #ec4899)',
+    image: softwareDev2Img,
+    linkedin: 'https://linkedin.com',
+  },
+  {
+    name: 'Mr. Shravan Wanve',
+    role: 'Technical Trainer',
+    initials: 'SW',
+    color: 'var(--neon-cyan)',
+    gradient: 'linear-gradient(135deg, #0ea5e9, #10b981)',
+    image: trainerImg,
+    linkedin: 'https://linkedin.com',
+  },
 ]
 
 function TeamCard({ member, delay }) {
@@ -87,7 +107,7 @@ function TeamCard({ member, delay }) {
         style={{ background: member.gradient }}
       >
         {member.image ? (
-          <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+          <img src={member.image} alt={member.name} className="w-full h-full object-cover object-top" />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-white text-4xl font-bold opacity-30">
             {member.initials}

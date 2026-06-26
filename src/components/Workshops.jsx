@@ -1,5 +1,10 @@
-import { useScrollAnimation } from '../hooks/useScrollAnimation'
-import { MapPin, Calendar, Users, Award, Star } from 'lucide-react'
+import ambalaImg from '../assets/ambalacantworkshop.jpg'
+import iitkImg from '../assets/iitkanpurworkshop1.jpg'
+import chandigarhImg from '../assets/Chadigarhworkshop.jpg'
+import digrasImg from '../assets/Digrasworkshop.jpg'
+import vimlabaiImg from '../assets/Vimlabaiworkshop.jpg'
+import samraImg from '../assets/Samraworkshop.jpg'
+import ramkrishnaImg from '../assets/ramkrishnaworkshop.jpg'
 
 const workshops = [
   {
@@ -8,14 +13,16 @@ const workshops = [
     type: 'Technical Training',
     color: 'var(--neon-cyan)',
     highlight: false,
+    image: ambalaImg,
   },
   {
-    title: 'IIT Kanpur Boeing Aeromodelling Workshop',
+    title: 'IIT Kanpur Boeing Aeromodelling',
     location: 'IIT Kanpur',
     type: 'Elite Mentorship',
     color: 'var(--neon-orange)',
     highlight: true,
     badge: 'IIT Kanpur × Boeing',
+    image: iitkImg,
   },
   {
     title: '2-Day Workshop',
@@ -23,6 +30,7 @@ const workshops = [
     type: 'University Program',
     color: 'var(--neon-green)',
     highlight: false,
+    image: chandigarhImg,
   },
   {
     title: '6-Day Intensive Workshop',
@@ -30,20 +38,23 @@ const workshops = [
     type: 'School Program',
     color: 'var(--neon-purple)',
     highlight: false,
+    image: digrasImg,
   },
   {
-    title: 'Project Development Workshop',
-    location: 'Vimlabai Deshmukh Mahavidyalay, Amravati',
+    title: 'Project Development',
+    location: 'Vimlabai Deshmukh Mahavidyalay',
     type: '2-Day Workshop',
     color: 'var(--neon-cyan)',
     highlight: false,
+    image: vimlabaiImg,
   },
   {
     title: 'Guest Lecture',
-    location: 'Bhavarilal Samra High School, Amravati',
+    location: 'Bhavarilal Samra High School',
     type: 'Awareness Session',
     color: 'var(--neon-green)',
     highlight: false,
+    image: samraImg,
   },
   {
     title: '2-Day Robotics Workshop',
@@ -51,93 +62,85 @@ const workshops = [
     type: 'Robotics Training',
     color: 'var(--neon-orange)',
     highlight: false,
+    image: ramkrishnaImg,
   },
-  // {
-  //   title: 'MOU Signed',
-  //   location: 'SGBAU Research Incubation & Foundation Center, Amravati',
-  //   type: 'Partnership',
-  //   color: 'var(--neon-purple)',
-  //   highlight: true,
-  //   badge: 'Official MOU',
-  // },
 ]
+
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import { MapPin, Star } from 'lucide-react'
 
 function WorkshopCard({ workshop, index }) {
   const [ref, isVisible] = useScrollAnimation()
-  const isLeft = index % 2 === 0
 
   return (
     <div
       ref={ref}
-      className={`flex gap-4 md:gap-8 items-start transition-all duration-700`}
+      className={`group relative rounded-3xl overflow-hidden glass transition-all duration-700 hover:scale-[1.02]`}
       style={{
         transitionDelay: `${index * 80}ms`,
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateX(0)' : `translateX(${isLeft ? '-30px' : '30px'})`
+        transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
+        background: 'var(--bg-card)',
+        border: `1px solid ${workshop.highlight ? workshop.color : 'var(--border)'}`,
+        boxShadow: workshop.highlight ? `0 10px 40px ${workshop.color}15` : 'var(--shadow-card)'
       }}
     >
-      {/* Timeline node */}
-      <div className="flex flex-col items-center flex-shrink-0 mt-1">
-        <div
-          className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold font-mono border-2 z-10"
-          style={{
-            background: workshop.highlight ? workshop.color : 'var(--bg-card)',
-            borderColor: workshop.color,
-            color: workshop.highlight ? 'black' : workshop.color,
-            boxShadow: workshop.highlight ? `0 0 20px ${workshop.color}60` : 'none'
-          }}
-        >
-          {String(index + 1).padStart(2, '0')}
-        </div>
-        {index < workshops.length - 1 && (
-          <div
-            className="w-px flex-1 min-h-8 mt-2"
-            style={{ background: `linear-gradient(to bottom, ${workshop.color}60, transparent)` }}
-          />
-        )}
-      </div>
-
-      {/* Card */}
-      <div
-        className="flex-1 p-5 rounded-2xl mb-6 card-hover glow-border group"
-        style={{ background: 'var(--bg-card)' }}
-      >
-        <div className="flex items-start justify-between gap-4 flex-wrap">
-          <div className="flex-1">
-            {workshop.badge && (
-                <span
-                  className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-bold font-mono mb-2"
-                  style={{
-                    background: `${workshop.color}18`,
-                    color: workshop.color,
-                    border: `1px solid ${workshop.color}40`
-                  }}
-                >
-                  <Star size={10} fill="currentColor" /> {workshop.badge}
-                </span>
-            )}
-            <h4 className="font-display font-bold text-base mb-1" style={{ color: 'var(--text-primary)' }}>
-              {workshop.title}
-            </h4>
-            <div className="flex items-center gap-1.5">
-              <MapPin size={12} style={{ color: workshop.color }} />
-              <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-                {workshop.location}
-              </span>
-            </div>
-          </div>
+      {/* Image Header */}
+      <div className="relative h-48 overflow-hidden">
+        <img 
+          src={workshop.image} 
+          alt={workshop.title} 
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        
+        {/* Type Badge */}
+        <div className="absolute top-4 left-4">
           <span
-            className="text-xs font-medium px-3 py-1 rounded-full"
+            className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
             style={{
-              background: `${workshop.color}10`,
-              color: workshop.color,
-              border: `1px solid ${workshop.color}30`
+              background: 'white',
+              color: 'black'
             }}
           >
             {workshop.type}
           </span>
         </div>
+
+        {/* Highlight Badge */}
+        {workshop.badge && (
+          <div className="absolute top-4 right-4">
+            <span
+              className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center gap-1"
+              style={{
+                background: workshop.color,
+                color: 'black'
+              }}
+            >
+              <Star size={10} fill="currentColor" /> {workshop.badge}
+            </span>
+          </div>
+        )}
       </div>
+
+      {/* Content */}
+      <div className="p-6">
+        <h4 className="font-display font-bold text-xl mb-2" style={{ color: 'var(--text-primary)' }}>
+          {workshop.title}
+        </h4>
+        <div className="flex items-center gap-2">
+          <MapPin size={14} style={{ color: workshop.color }} />
+          <span className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>
+            {workshop.location}
+          </span>
+        </div>
+      </div>
+
+      {/* Hover accent */}
+      <div
+        className="absolute bottom-0 left-0 h-1 w-full scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
+        style={{ background: workshop.color }}
+      />
     </div>
   )
 }
@@ -152,7 +155,7 @@ export default function Workshops() {
         style={{ background: 'linear-gradient(90deg, transparent, var(--neon-cyan), transparent)' }}
       />
 
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         <div
           ref={titleRef}
           className="text-center mb-20 transition-all duration-700"
@@ -173,12 +176,12 @@ export default function Workshops() {
             <br />
             <span className="text-gradient">India & Beyond</span>
           </h2>
-          <p className="text-lg" style={{ color: 'var(--text-secondary)' }}>
-            From IIT Kanpur to local municipality schools — our workshops span the nation.
+          <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
+            From elite technical mentorship at IIT Kanpur to inspiring innovation in local municipality schools across the nation.
           </p>
         </div>
 
-        <div className="relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {workshops.map((w, i) => (
             <WorkshopCard key={i} workshop={w} index={i} />
           ))}

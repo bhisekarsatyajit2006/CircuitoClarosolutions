@@ -10,6 +10,7 @@ import Workshops from './components/Workshops'
 import Team from './components/Team'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import WhatsAppFloat from './components/WhatsAppFloat'
 
 function AppContent() {
   return (
@@ -28,6 +29,7 @@ function AppContent() {
         <Contact />
       </main>
       <Footer />
+      <WhatsAppFloat />
     </div>
   )
 }
